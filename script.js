@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 productCard.innerHTML = `
                     <div class="product-icon">💧</div>
                     <h3 class="product-title">${product.name}</h3>
-                    <a href="${product.manual}" target="_blank" class="btn-manual">지침서 보기</a>
+                    <a href="${product.manual}" target="_blank" class="btn-manual">유지관리지침서 보기</a>
                 `;
                 productsContainer.appendChild(productCard);
             });
