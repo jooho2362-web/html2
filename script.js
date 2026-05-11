@@ -7,11 +7,11 @@ const HISTORY_DATA = [
 ];
 
 const PRODUCT_DATA = [
-    { id: 1, name: "다단벌류트펌프" },
-    { id: 2, name: "수중펌프" },
-    { id: 3, name: "정량펌프" },
-    { id: 4, name: "심정용펌프" },
-    { id: 5, name: "부스터펌프" }
+    { id: 1, name: "다단벌류트펌프", manual: "docs/다단벌류트펌프_지침서.pdf" },
+    { id: 2, name: "수중펌프", manual: "docs/수중펌프_지침서.pdf" },
+    { id: 3, name: "정량펌프", manual: "docs/정량펌프_지침서.pdf" },
+    { id: 4, name: "심정용펌프", manual: "docs/심정용펌프_지침서.pdf" },
+    { id: 5, name: "부스터펌프", manual: "docs/부스터펌프_지침서.pdf" }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -75,26 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
             productCard.innerHTML = `
                 <div class="product-icon">💧</div>
                 <h3 class="product-title">${product.name}</h3>
+                <a href="${product.manual}" target="_blank" class="btn-manual">유지관리지침서 PDF 보기</a>
             `;
             productsContainer.appendChild(productCard);
         });
     }
 
-    // Kakao Map Initialization
-    const mapContainer = document.getElementById('map');
-    if (mapContainer && typeof kakao !== 'undefined' && kakao.maps) {
-        const mapOption = { 
-            center: new kakao.maps.LatLng(37.868224, 127.732782), // Approximate coordinate for Chuncheon Toegye-ro 1
-            level: 3 
-        };
-
-        const map = new kakao.maps.Map(mapContainer, mapOption); 
-        
-        // Add Marker
-        const markerPosition  = new kakao.maps.LatLng(37.868224, 127.732782); 
-        const marker = new kakao.maps.Marker({
-            position: markerPosition
-        });
-        marker.setMap(map);
-    }
 });
