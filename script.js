@@ -1,17 +1,8 @@
-// Hardcoded data to avoid CORS issues when opening files directly via file://
 const HISTORY_DATA = [
     { date: "2010.11.01", event: "(주)강원유체 설립" },
     { date: "2013.02", event: "비에이텍(주) 상호변경" },
     { date: "2017.12", event: "강원도지사 표창" },
     { date: "2024.08", event: "ISO 9001 인증" }
-];
-
-const PRODUCT_DATA = [
-    { id: 1, name: "다단벌류트펌프", manual: "docs/다단벌류트펌프_지침서.pdf" },
-    { id: 2, name: "수중펌프", manual: "docs/수중펌프_지침서.pdf" },
-    { id: 3, name: "정량펌프", manual: "docs/정량펌프_지침서.pdf" },
-    { id: 4, name: "심정용펌프", manual: "docs/심정용펌프_지침서.pdf" },
-    { id: 5, name: "부스터펌프", manual: "docs/부스터펌프_지침서.pdf" }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -69,16 +60,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render Products/Equipment (if container exists on the page)
     const productsContainer = document.getElementById('products-container');
     if (productsContainer) {
-        PRODUCT_DATA.forEach(product => {
-            const productCard = document.createElement('div');
-            productCard.className = 'product-card';
-            productCard.innerHTML = `
-                <div class="product-icon">💧</div>
-                <h3 class="product-title">${product.name}</h3>
-                <a href="${product.manual}" target="_blank" class="btn-manual">유지관리지침서 PDF 보기</a>
-            `;
-            productsContainer.appendChild(productCard);
-        });
+        const renderProducts = products => {
+            productsContainer.innerHTML = '';
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-icon">💧</div>
+                    <h3 class="product-title">${product.name}</h3>
+                    <a href="${product.manual}" target="_blank" class="btn-manual">지침서 보기</a>
+                `;
+                productsContainer.appendChild(productCard);
+            });
+        };
+
+        fetch('products.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`JSON fetch failed: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (Array.isArray(data) && data.length > 0) {
+                    renderProducts(data);
+                } else {
+                    throw new Error('Invalid product JSON data');
+                }
+            })
+            .catch(error => {
+                console.error('제품 데이터를 불러오는 중 오류 발생:', error);
+                productsContainer.innerHTML = '<p>제품 정보를 불러오는 중 오류가 발생했습니다. 다시 시도해 주세요.</p>';
+            });
     }
 
 });

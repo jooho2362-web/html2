@@ -2,26 +2,26 @@
     {
         "id": 1,
         "name": "다단벌류트펌프",
-        "manual": "docs/다단벌류트펌프_지침서.pdf"
+        "manual": "docs/multistage_pump.pdf"
     },
     {
         "id": 2,
         "name": "수중펌프",
-        "manual": "docs/수중펌프_지침서.pdf"
+        "manual": "docs/submersible_pump.pdf"
     },
     {
         "id": 3,
         "name": "정량펌프",
-        "manual": "docs/정량펌프_지침서.pdf"
+        "manual": "docs/dosing_pump.pdf"
     },
     {
         "id": 4,
         "name": "심정용펌프",
-        "manual": "docs/심정용펌프_지침서.pdf"
+        "manual": "docs/well_pump.pdf"
     },
     {
         "id": 5,
         "name": "부스터펌프",
-        "manual": "docs/부스터펌프_지침서.pdf"
+        "manual": "docs/booster_pump.pdf"
     }
 ]
