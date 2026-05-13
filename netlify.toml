@@ -1,0 +1,3 @@
+[build]
+  publish = "batech"
+  command = "echo 'No build step required'"
