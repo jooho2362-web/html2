@@ -1,21 +1,36 @@
-// Hardcoded data to avoid CORS issues when opening files directly via file://
-const HISTORY_DATA = [
-    { date: "2024.08", event: "ISO 9001 인증" },
-    { date: "2017.12", event: "강원도지사 표창" },
-    { date: "2013.02", event: "비에이텍(주) 상호변경" },
-    { date: "2010.11.01", event: "(주)강원유체 설립" }
-];
+// Load data from JSON files
+let HISTORY_DATA = [];
+let PRODUCT_DATA = [];
 
-const PRODUCT_DATA = [
-    { id: 1, name: "편흡입볼류트펌프", manual: "../docs/편흡입볼류트펌프 유지관리지침서.pdf" },
-    { id: 2, name: "수중펌프", manual: "../docs/수중펌프 유지관리지침서.pdf" },
-    { id: 3, name: "정량펌프", manual: "../docs/정량펌프 유지관리지침서.pdf" },
-    { id: 4, name: "슬러지펌프", manual: "../docs/슬러지펌프 유지관리지침서.pdf" },
-    { id: 5, name: "일축나사식 모노펌프", manual: "../docs/일축나사식 모노펌프 유지관리지침서.pdf" },
-    { id: 6, name: "부스터펌프", manual: "../docs/부스터펌프 유지관리지침서.pdf" }
-];
+async function loadData() {
+    try {
+        const historyResponse = await fetch('history.json');
+        HISTORY_DATA = await historyResponse.json();
+        
+        const productsResponse = await fetch('products.json');
+        PRODUCT_DATA = await productsResponse.json();
+    } catch (error) {
+        console.error('데이터 로드 실패:', error);
+        // Fallback to hardcoded data if fetch fails
+        HISTORY_DATA = [
+            { date: "2024.08", event: "ISO 9001 인증" },
+            { date: "2017.12", event: "강원도지사 표창" },
+            { date: "2013.02", event: "비에이텍(주) 상호변경" },
+            { date: "2010.11.01", event: "(주)강원유체 설립" }
+        ];
+        PRODUCT_DATA = [
+            { id: 1, name: "편흡입볼류트펌프", manual: "../docs/편흡입볼류트펌프 유지관리지침서.pdf" },
+            { id: 2, name: "수중펌프", manual: "../docs/수중펌프 유지관리지침서.pdf" },
+            { id: 3, name: "정량펌프", manual: "../docs/정량펌프 유지관리지침서.pdf" },
+            { id: 4, name: "슬러지펌프", manual: "../docs/슬러지펌프 유지관리지침서.pdf" },
+            { id: 5, name: "일축나사식 모노펌프", manual: "../docs/일축나사식 모노펌프 유지관리지침서.pdf" },
+            { id: 6, name: "부스터펌프", manual: "../docs/부스터펌프 유지관리지침서.pdf" }
+        ];
+    }
+}
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadData();
     // Mobile Menu Toggle
     const hamburger = document.querySelector('.hamburger');
     const gnb = document.querySelector('.gnb');
