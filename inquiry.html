@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의 - 비에이텍(주)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">비에이텍(주)</a>
+            </div>
+            <nav class="gnb">
+                <ul>
+                    <li><a href="intro.html">기업소개</a></li>
+                    <li><a href="product.html">주요제품</a></li>
+                    <li><a href="equipment.html">장비</a></li>
+                    <li><a href="sales_history.html">연혁</a></li>
+                    <li><a href="map.html">찾아오시는 길</a></li>
+                    <li><a href="inquiry.html" style="color:var(--primary-blue)">문의</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1>문의</h1>
+        </div>
+
+        <section class="section bg-light">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="content-text" style="margin-bottom: 40px;">
+                    <p>제품 및 서비스에 대한 문의사항을 남겨주시면 신속하게 답변해 드리겠습니다.</p>
+                </div>
+                <form class="contact-form" name="inquiry" method="POST" data-netlify="true">
+                    <div class="form-group">
+                        <label for="name">이름 / 회사명</label>
+                        <input type="text" id="name" name="name" required placeholder="이름이나 회사명을 입력하세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" name="email" required placeholder="답변 받으실 이메일을 입력하세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">문의 내용</label>
+                        <textarea id="message" name="message" rows="6" required placeholder="문의하실 내용을 상세히 적어주세요"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">문의하기</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-info">
+                <h2>비에이텍(주)</h2>
+                <p><strong>주소:</strong> 강원특별자치도 춘천시 퇴계공단2길 64</p>
+                <p><strong>전화:</strong> 033-264-9243 &nbsp;|&nbsp; <strong>팩스:</strong> 033-251-5747</p>
+                <p><strong>담당자 이메일:</strong> aaa@naver.com</p>
+                <p class="copyright">&copy; 2026 B.A.Tech. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
